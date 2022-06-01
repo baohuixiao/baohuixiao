@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo clean && hexo deploy",
     "server": "hexo server",
-    "quickly": "git push origin master:master && pnpm run deploy"
+    "quickly": "git add . && git commit -m '加油～' && git push origin master:master && pnpm run deploy"
   },
   "hexo": {
     "version": "6.2.0"
