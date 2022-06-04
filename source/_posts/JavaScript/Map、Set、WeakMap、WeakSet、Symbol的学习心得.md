@@ -1,8 +1,8 @@
 ---
-Title: Map、Set、WeakMap、WeakSet、Symbol的学习心得
+title: Map、Set、WeakMap、WeakSet、Symbol的学习心得
 ---
 
-关于上面这些数据结构的具体使用方法就不在这里讨论了，大可以去mdn中看详细的文档，这里主要记录的是在看完mdn中文档后我的一些心得
+关于这些数据结构的具体使用方法就不在这里讨论了，大可以去mdn中看详细的文档，这里主要记录的是在看完mdn中文档后我的一些心得
 
 * Map
 
