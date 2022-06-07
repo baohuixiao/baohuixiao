@@ -107,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%8E%9F%E7%90%86/" data-id="cl43v7k8c0004sj1gag274pmf" data-title="构建工具中的代理原理" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%8E%9F%E7%90%86/" data-id="cl43zhnbb0004oa1g1j088zfz" data-title="构建工具中的代理原理" class="article-share-link">Share</a>
       
       
       
@@ -163,7 +163,63 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%9E%B6%E6%9E%84%E5%B8%88/" data-id="cl43v7k890002sj1gdwzf3tt5" data-title="怎么成为一名架构师" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%9E%B6%E6%9E%84%E5%B8%88/" data-id="cl43zhnb90002oa1ggeu14zjo" data-title="怎么成为一名架构师" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-JavaScript/Map、Set、WeakMap、WeakSet、Symbol的学习心得" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/baohuixiao/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" class="article-date">
+  <time class="dt-published" datetime="2022-06-07T07:51:54.424Z" itemprop="datePublished">2022-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/baohuixiao/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Map、Set、WeakMap、WeakSet、Symbol的学习心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>关于这些数据结构的具体使用方法就不在这里讨论了，大可以去mdn中看详细的文档，这里主要记录的是在看完mdn中文档后我的一些心得</p>
+<ul>
+<li><p>Map</p>
+<p>在我看来Map和我们平时用的Object是很像的，或者你可以用它来想象Map，都是以键值对的方式来保存数据的，只不过Map中的数据顺序是按你存储的顺序。Map可以很快的获取对应的长度。Map中不会有多余的字段，不想Object中可能会继承自原型一些字段。还有一个很重要的区别是，Object只能已字符串作为key，但是Map可以是任何类型</p>
+</li>
+<li><p>WeakMap</p>
+<p>我对WeakMap了解不深，甚至想象不到它的应用场景，WeakMap的key不能是任意对象，只能是对象类型，对象类型的数据，一旦别的地方没有引用，或者不可达，那么这个key就会被垃圾回收掉，它对应的值自然也会被回收掉，这就导致它的迭代问题，因为我们并不知道它什么时候会被回收掉，所以不能迭代</p>
+</li>
+<li><p>Set</p>
+<p>Set和数组很像，只不过它所拥有的数据是不能重复的。</p>
+</li>
+<li><p>WeakSet</p>
+<p>Set中可以存储任何类型的数据，而在WeakSet中只能存储对象类型的数据结构，它和WeakMap很相似，它所存储的数据可能会被垃圾回收给回收掉，所以也是存在迭代的问题</p>
+</li>
+<li><p>Symbol</p>
+<p>Symbol是基本数据类型，不像上面的都是对象类型的数据。每个从Symbol()返回的 symbol 值都是唯一的。一个 symbol 值能作为对象属性的标识符；这是该数据类型仅有的目的。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://baohuixiao.github.io/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-id="cl43zhnbc0005oa1g9sztai6n" data-title="Map、Set、WeakMap、WeakSet、Symbol的学习心得" class="article-share-link">Share</a>
       
       
       
@@ -223,63 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/" data-id="cl43v7k8c0005sj1g6z2v91cu" data-title="Vue.js的设计与实现" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-JavaScript/Map、Set、WeakMap、WeakSet、Symbol的学习心得" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/baohuixiao/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" class="article-date">
-  <time class="dt-published" datetime="2022-06-07T07:51:54.424Z" itemprop="datePublished">2022-06-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/baohuixiao/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Map、Set、WeakMap、WeakSet、Symbol的学习心得</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>关于这些数据结构的具体使用方法就不在这里讨论了，大可以去mdn中看详细的文档，这里主要记录的是在看完mdn中文档后我的一些心得</p>
-<ul>
-<li><p>Map</p>
-<p>在我看来Map和我们平时用的Object是很像的，或者你可以用它来想象Map，都是以键值对的方式来保存数据的，只不过Map中的数据顺序是按你存储的顺序。Map可以很快的获取对应的长度。Map中不会有多余的字段，不想Object中可能会继承自原型一些字段。还有一个很重要的区别是，Object只能已字符串作为key，但是Map可以是任何类型</p>
-</li>
-<li><p>WeakMap</p>
-<p>我对WeakMap了解不深，甚至想象不到它的应用场景，WeakMap的key不能是任意对象，只能是对象类型，对象类型的数据，一旦别的地方没有引用，或者不可达，那么这个key就会被垃圾回收掉，它对应的值自然也会被回收掉，这就导致它的迭代问题，因为我们并不知道它什么时候会被回收掉，所以不能迭代</p>
-</li>
-<li><p>Set</p>
-<p>Set和数组很像，只不过它所拥有的数据是不能重复的。</p>
-</li>
-<li><p>WeakSet</p>
-<p>Set中可以存储任何类型的数据，而在WeakSet中只能存储对象类型的数据结构，它和WeakMap很相似，它所存储的数据可能会被垃圾回收给回收掉，所以也是存在迭代的问题</p>
-</li>
-<li><p>Symbol</p>
-<p>Symbol是基本数据类型，不像上面的都是对象类型的数据。每个从Symbol()返回的 symbol 值都是唯一的。一个 symbol 值能作为对象属性的标识符；这是该数据类型仅有的目的。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-id="cl43v7k8d0006sj1g1w7ra8db" data-title="Map、Set、WeakMap、WeakSet、Symbol的学习心得" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/" data-id="cl43zhnbc0006oa1g5cgx7s7x" data-title="Vue.js的设计与实现" class="article-share-link">Share</a>
       
       
       
@@ -338,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/6%E6%9C%88%E4%BB%BD%E5%8D%9A%E5%AE%A2%E8%AE%A1%E5%88%92/" data-id="cl43v7k820000sj1g6mic6nza" data-title="六月博客计划" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/6%E6%9C%88%E4%BB%BD%E5%8D%9A%E5%AE%A2%E8%AE%A1%E5%88%92/" data-id="cl43zhnb30000oa1gg3hghuwi" data-title="六月博客计划" class="article-share-link">Share</a>
       
       
       
@@ -389,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/hello-world/" data-id="cl43v7k870001sj1gdss1eukx" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/hello-world/" data-id="cl43zhnb70001oa1gb3pzc5x5" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -429,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" data-id="cl43v7k8b0003sj1g5bq6eerv" data-title="开端" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" data-id="cl43zhnba0003oa1gcs4k7qk4" data-title="开端" class="article-share-link">Share</a>
       
       
       
@@ -525,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/%E5%B7%A5%E4%BD%9C/%E7%AE%80%E5%8E%86%E7%9A%84%E4%B9%A6%E5%86%99/" data-id="cl43v7k8d0007sj1gdfe2h06z" data-title="简历的书写" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/%E5%B7%A5%E4%BD%9C/%E7%AE%80%E5%8E%86%E7%9A%84%E4%B9%A6%E5%86%99/" data-id="cl43zhnbd0007oa1gbcr4bqs0" data-title="简历的书写" class="article-share-link">Share</a>
       
       
       
@@ -583,11 +583,11 @@
           </li>
         
           <li>
-            <a href="/baohuixiao/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/">Vue.js的设计与实现</a>
+            <a href="/baohuixiao/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Map、Set、WeakMap、WeakSet、Symbol的学习心得</a>
           </li>
         
           <li>
-            <a href="/baohuixiao/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">Map、Set、WeakMap、WeakSet、Symbol的学习心得</a>
+            <a href="/baohuixiao/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/">Vue.js的设计与实现</a>
           </li>
         
           <li>
