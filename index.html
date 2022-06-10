@@ -75,6 +75,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaScript/js精度丢失问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/baohuixiao/2022/06/10/JavaScript/js%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-06-10T08:32:24.490Z" itemprop="datePublished">2022-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/baohuixiao/2022/06/10/JavaScript/js%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">js精度丢失问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>比如0.1+0.2并不等于0.3</p>
+<p>JavaScript 里的数字是采用IEEE 754标准的 64 位双精度浮点数，计算机进行计算的时候，会把数字转换为二进制，进行运算之后再转换为十进制，但是运算过程中小数部分最多支持52位，就会出现运算精度问题。</p>
+<p>这会导致以下几个问题</p>
+<ul>
+<li>和服务端的数据对不上</li>
+<li>没办法和我们理想中的值进行比较</li>
+</ul>
+<p>解决这个问题的方案也比较简单：</p>
+<p>出现这个问题的情况主要是计算的数字中有浮点数，那么这个好办，那就先将数字转化为十进制，这样就不存在精度丢失了，然后再转成浮点数</p>
+<p>不bb，直接贴段代码，要举一反三哦</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addFloatNum</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="comment">// 第一步，找出数字中小数位的位数</span></span><br><span class="line">  <span class="keyword">const</span> num1Len = num1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>]?.<span class="property">length</span> || <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> num2Len = num2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>]?.<span class="property">length</span> || <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 第二步，利用最大的小数位数，计算出要把所有数字专为整数的乘数</span></span><br><span class="line">  <span class="keyword">const</span> maxLen = <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>, <span class="title class_">Math</span>.<span class="title function_">max</span>(num1Len, num2Len));</span><br><span class="line">  <span class="comment">// 第三步，现将数字都乘以第二步所得乘数，转成整数，然后进行计算</span></span><br><span class="line">  <span class="comment">// 第四步，获得计算后的整数值，再将整数值除以第三步的结果，转化回浮点数</span></span><br><span class="line">  <span class="keyword">return</span> (num1 * maxLen + num2 * maxLen) / maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面所贴代码只能进行两个数字的处理，后续可以利用柯里化解决多个数字的处理，目前对柯里化不太熟悉，后续熟悉了再优化</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://baohuixiao.github.io/2022/06/10/JavaScript/js%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" data-id="cl488d0ux0007ub1gg73j4l1p" data-title="js精度丢失问题" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-构建工具中的代理原理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/baohuixiao/2022/06/07/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%8E%9F%E7%90%86/" class="article-date">
@@ -107,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%8E%9F%E7%90%86/" data-id="cl43zhnbb0004oa1g1j088zfz" data-title="构建工具中的代理原理" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%8E%9F%E7%90%86/" data-id="cl488d0uy0008ub1g02758e3p" data-title="构建工具中的代理原理" class="article-share-link">Share</a>
       
       
       
@@ -163,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%9E%B6%E6%9E%84%E5%B8%88/" data-id="cl43zhnb90002oa1ggeu14zjo" data-title="怎么成为一名架构师" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%9E%B6%E6%9E%84%E5%B8%88/" data-id="cl488d0us0002ub1g2qgn4fh2" data-title="怎么成为一名架构师" class="article-share-link">Share</a>
       
       
       
@@ -219,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-id="cl43zhnbc0005oa1g9sztai6n" data-title="Map、Set、WeakMap、WeakSet、Symbol的学习心得" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/JavaScript/Map%E3%80%81Set%E3%80%81WeakMap%E3%80%81WeakSet%E3%80%81Symbol%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-id="cl488d0uv0004ub1g0tegcgcc" data-title="Map、Set、WeakMap、WeakSet、Symbol的学习心得" class="article-share-link">Share</a>
       
       
       
@@ -279,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/" data-id="cl43zhnbc0006oa1g5cgx7s7x" data-title="Vue.js的设计与实现" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/" data-id="cl488d0ux0006ub1g0r3a55ew" data-title="Vue.js的设计与实现" class="article-share-link">Share</a>
       
       
       
@@ -338,58 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/6%E6%9C%88%E4%BB%BD%E5%8D%9A%E5%AE%A2%E8%AE%A1%E5%88%92/" data-id="cl43zhnb30000oa1gg3hghuwi" data-title="六月博客计划" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/baohuixiao/2022/06/02/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-06-02T06:33:04.323Z" itemprop="datePublished">2022-06-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/baohuixiao/2022/06/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/hello-world/" data-id="cl43zhnb70001oa1gb3pzc5x5" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/6%E6%9C%88%E4%BB%BD%E5%8D%9A%E5%AE%A2%E8%AE%A1%E5%88%92/" data-id="cl488d0uk0000ub1geufh9z2g" data-title="六月博客计划" class="article-share-link">Share</a>
       
       
       
@@ -429,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" data-id="cl43zhnba0003oa1gcs4k7qk4" data-title="开端" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" data-id="cl488d0uq0001ub1g6uyogbyo" data-title="开端" class="article-share-link">Share</a>
       
       
       
@@ -525,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://baohuixiao.github.io/2022/06/02/%E5%B7%A5%E4%BD%9C/%E7%AE%80%E5%8E%86%E7%9A%84%E4%B9%A6%E5%86%99/" data-id="cl43zhnbd0007oa1gbcr4bqs0" data-title="简历的书写" class="article-share-link">Share</a>
+      <a data-url="https://baohuixiao.github.io/2022/06/02/%E5%B7%A5%E4%BD%9C/%E7%AE%80%E5%8E%86%E7%9A%84%E4%B9%A6%E5%86%99/" data-id="cl488d0uu0003ub1g42mm1y97" data-title="简历的书写" class="article-share-link">Share</a>
       
       
       
@@ -575,6 +575,10 @@
       <ul>
         
           <li>
+            <a href="/baohuixiao/2022/06/10/JavaScript/js%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">js精度丢失问题</a>
+          </li>
+        
+          <li>
             <a href="/baohuixiao/2022/06/07/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%8E%9F%E7%90%86/">构建工具中的代理原理</a>
           </li>
         
@@ -588,10 +592,6 @@
         
           <li>
             <a href="/baohuixiao/2022/06/07/Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/01/">Vue.js的设计与实现</a>
-          </li>
-        
-          <li>
-            <a href="/baohuixiao/2022/06/02/6%E6%9C%88%E4%BB%BD%E5%8D%9A%E5%AE%A2%E8%AE%A1%E5%88%92/">六月博客计划</a>
           </li>
         
       </ul>
